@@ -18,3 +18,10 @@ addBookToLibrary('Be you', "Tunde", 50, false)
 addBookToLibrary('Absolute', 'George', 300,true )
 console.log(myLibrary);
 
+function displayBook () {
+    for(let key in myLibrary){
+        return (key);
+    }
+}
+
+console.log(key);
