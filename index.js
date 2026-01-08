@@ -8,6 +8,9 @@ function Book (title,author,pages,read) {
       this.read = read;
 }
 
+Book.prototype.toggleRead = function(){
+    this.read = !this.read
+}
 function addBookToLibrary (title,author,pages,read){
     const newBook = new Book (title,author,pages,read)
     myLibrary.push(newBook)
@@ -56,14 +59,22 @@ function displayBook () {
         bookCard.appendChild(bookPages)
 
         const hasReadBook = document.createElement("p");
-        hasReadBook.textContent = `Read:${book.read}`;
+        hasReadBook.textContent = `Read:${book.read ? "Yes" : "No"}`;
         bookCard.appendChild(hasReadBook);
 
-        myLibrary.forEach((book)=>{
+        const toggleBtn = document.createElement('button');
+        toggleBtn.textContent = "Toggle Read Status";
+        toggleBtn.style.cssText = "margin-top:10px; margin-right:5px; cursor:pointer;background-color:#4CAF50; color:white; border:none;padding:5px 10px;border-radius:3px;"
+
+        toggleBtn. addEventListener("click", ()=>{
+            book.toggleRead()// call the prototype function
+            displayBook();
+        })
+        bookCard.appendChild(toggleBtn)
             const removeBtn = document.createElement('button');
             removeBtn.textContent = 'Remove Book';
             // 2. Associate the DOM element with the book's unique ID
-            removeBtn.setAttribute('data-bookid', book.id);
+            removeBtn.setAttribute('data-book-id', book.id);
             removeBtn.style.cssText = "margin-top:10px; cursor:pointer;background-color:white;color:rebeccapurple,border:none;padding:5px 10px;border-radius:3px;"
 
             removeBtn.addEventListener("click",(e)=>{
@@ -71,7 +82,7 @@ function displayBook () {
                 removeBook(idToRemove)
             })
             bookCard.appendChild(removeBtn)
-        })
+        
 
         
     })
@@ -114,7 +125,7 @@ function removeBook(id) {
     const bookIndex = myLibrary.findIndex(book => book.id === id);
     
     // If the book is found, remove it from the array
-    if (bookIndex > -1) {
+    if (bookIndex !== -1) {
         myLibrary.splice(bookIndex, 1);
     }
     
