@@ -7,7 +7,36 @@
     <title>Library-Project</title>
 </head>
 <body>
+    <h1>Welcome to Olatunji Ogidan's Library</h1>
+
     <div id="container"></div>
+    
+     <button id="modal-button">Click to add your book</button>
+  <dialog id="modal" >
+    <form method="dialog" >
+      <div>
+        <label for="author">Author's Name</label>
+        <input type="text" id="author" required placeholder="Sam Doe">
+        </div>
+         
+        <div> 
+        <label for="book-title"> Book Title</label>
+        <input type="text" id="book-title" required>
+         </div>
+
+         <div>
+        <label for="pages">Number of pages</label>
+        <input type="number" id="pages">
+        </div>
+
+        <div>
+        <label for="read">book has been read</label>
+        <input type="checkbox" id="read">
+        </div>
+        <button class="close-button" type="submit">Add book</button>
+
+    </form>
+  </dialog>
     <script src="index.js"></script>
 </body>
 </html>
