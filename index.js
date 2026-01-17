@@ -1,12 +1,27 @@
 const myLibrary  =  [];
 
-function Book (title,author,pages,read) {
-      this.id = crypto.randomUUID();
-      this.title = title;
-      this.author = author;
-      this.pages = pages;
-      this.read = read;
+// Using constructor initailly
+// function Book (title,author,pages,read) {
+//       this.id = crypto.randomUUID();
+//       this.title = title;
+//       this.author = author;
+//       this.pages = pages;
+//       this.read = read;
+// }
+
+//Refactoring my code using classes
+
+class Book{
+    constructor(title,author,pages,read){
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
+
+
 
 Book.prototype.toggleRead = function(){
     this.read = !this.read
@@ -19,7 +34,7 @@ function addBookToLibrary (title,author,pages,read){
 addBookToLibrary("Osanle", 'Nike', 295, true)
 addBookToLibrary('Be you', "Tunde", 50, false)
 addBookToLibrary('Absolute', 'George', 300,true )
-console.log(myLibrary);
+// console.log(myLibrary);
 
 function displayBook () {
     const container = document.querySelector("#container")
