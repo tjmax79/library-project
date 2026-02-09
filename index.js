@@ -56,9 +56,9 @@ function displayBook () {
         container.appendChild(bookCard)
 
         
-        const bookId = document.createElement('p')
-        bookId.textContent = `Id: ${book.id}`
-        bookCard.appendChild(bookId)
+        // const bookId = document.createElement('p')
+        // bookId.textContent = `Id: ${book.id}`
+        // bookCard.appendChild(bookId)
 
 
         const bookTitle = document.createElement("h3");
